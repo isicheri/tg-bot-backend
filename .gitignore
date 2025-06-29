@@ -1,0 +1,29 @@
+# Node
+node_modules
+dist
+.env
+
+# Logs
+logs
+*.log
+
+# Runtime files
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage
+
+# Optional: OS-specific
+.DS_Store
+Thumbs.db
+
+# Editor configs
+.vscode
+
+# Husky internal files (already handled by .husky/_/.gitignore, but safe to add)
+.husky/_/*
+
+/src/config/db/prisma
