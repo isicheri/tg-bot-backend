@@ -1,0 +1,43 @@
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.2s;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bg-gradient-telegraph {
+  background: linear-gradient(
+    to bottom left,
+    oklch(44% 0.017 285.786) 40%,
+    oklch(14% 0 0) 80%
+  );
+}
+
+.bg-gradient-telegraph3 {
+  background: linear-gradient(
+    to bottom right,
+    oklch(44% 0.017 285.786) 40%,
+    oklch(14% 0 0) 80%
+  );
+}
+
+.bg-gradient-telegraph-bottom {
+  background: linear-gradient(
+    to top right,
+    oklch(14% 0 0) 50%,   /* black from bottom */
+    oklch(44% 0.017 285.786) 90%  /* white toward top-right */
+  );
+}
+
+.font-dancing {
+    font-family: 'Dancing Script', cursive;
+}
+
+.font-open {
+    font-family: 'Open Sans', sans-serif;
+}

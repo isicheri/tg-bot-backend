@@ -1,11 +1,13 @@
-import prismaClient from "../../config/db/client";
-import { getPrismaClient } from "../../config/db/client/runtime/library";
+import prismaClient from '../../config/db/client';
 
 export class UserService {
-    createUser() {}
+  createUser() {}
 
-    async findUserByUsername(username: string) {
-        return await prismaClient.user.findFirst({where: {username}})
-    }
+  async findUserByUsername(username: string) {
+    return await prismaClient.user.findFirst({ where: { username } });
+  }
 
+  async findUserById(id: string) {
+    return await prismaClient.user.findUnique({ where: { id } });
+  }
 }

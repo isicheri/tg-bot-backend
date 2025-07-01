@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeleGraph - Telegram Bot Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="/assets/logoImg.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="/css/animation.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body class="bg-base-200">
+
+  <!-- Navbar with fixed positioning -->
+  <div
+    class="navbar bg-base-100 shadow-sm z-50 fixed top-0 left-0 right-0 px-4 sm:px-6"
+  >
+    <div class="navbar-start">
+      <div class="dropdown">
+        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </div>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+        >
+          <li><a href="#home" class="font-open">Home</a></li>
+        <li><a href="#guide" class="font-open">Guide</a></li>
+        <li><a href="#features" class="font-open">Features</a></li>
+        <li><a href="#who-for" class="font-open">Who for</a></li>
+        <li><a href="#pricing" class="font-open">Pricing</a></li>
+        <li><a href="#feedback" class="font-open">Feedback</a></li>
+        <li><a href="#faq" class="font-open">FAQ</a></li>
+        </ul>
+      </div>
+      <a
+        href="/"
+        class="btn btn-ghost text-xl flex items-center gap-2 whitespace-nowrap"
+      >
+        <img
+          src="/assets/logoImg.svg"
+          alt="TeleGraph logo"
+          class="h-6 w-auto"
+        />
+        TeleGraph
+      </a>
+    </div>
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1">
+        <li><a href="#home" class="font-open">Home</a></li>
+        <li><a href="#guide" class="font-open">Guide</a></li>
+        <li><a href="#features" class="font-open">Features</a></li>
+        <li><a href="#who-for" class="font-open">Who for</a></li>
+        <li><a href="#pricing" class="font-open">Pricing</a></li>
+        <li><a href="#feedback" class="font-open">Feedback</a></li>
+        <li><a href="#faq" class="font-open">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="navbar-end">
+      <a href="/signin" class="btn whitespace-nowrap">Sign In</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero bg-base-200 min-h-screen pt-20 px-4 sm:px-6" id="home">
+    <div class="hero-content flex flex-col lg:flex-row items-center max-w-7xl mx-auto w-full">
+      <div class="text-center lg:text-left max-w-lg sm:max-w-xl">
+    <h1 class="text-4xl sm:text-5xl font-bold italic font-dancing scroll-reveal leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+  Manage Your Telegram Bots
+</h1>
+
+        <p class="py-6 text-base sm:text-lg scroll-reveal font-open">
+          Start, stop, and monitor your bots with ease. An intuitive dashboard
+          designed for speed, simplicity, and control.
+        </p>
+        <a href="/signin" class="btn btn-primary scroll-reveal w-full sm:w-auto"
+          >Get Started</a
+        >
+      </div>
+      <img
+        src="/assets/heroimg.svg"
+        class="max-w-xs sm:max-w-sm md:max-w-md rounded-lg shadow-2xl scroll-reveal mt-8 lg:mt-0"
+        alt="Dashboard Illustration"
+      />
+    </div>
+  </div>
+
+  <!-- Guide Section -->
+<section id="guide" class="py-20 bg-base-200 px-4 sm:px-6">
+  <div class="max-w-5xl mx-auto text-center">
+
+  <h2 class="text-3xl sm:text-4xl font-bold mb-6 scroll-reveal uppercase tracking-wide font-dancing">
+  How It Works
+</h2>
+<div class="h-1 w-24 mx-auto bg-primary rounded scroll-reveal"></div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-10">
+      
+      <!-- Step 1 -->
+      <div class="card bg-base-100 p-6 shadow scroll-reveal">
+        <div class="flex items-center justify-center mb-4">
+          <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 11-6 0 3 3 0 016 0zM16 9a3 3 0 11-6 0 3 3 0 016 0zM3 14s1-2 5-2 5 2 5 2v1H3v-1zM11 14s1-2 5-2 5 2 5 2v1h-10v-1z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent scroll-reveal ">
+          1. Sign Up
+        </h3>
+        <p class="scroll-reveal font-open">Create your free account to access the dashboard.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="card bg-base-100 p-6 shadow scroll-reveal">
+        <div class="flex items-center justify-center mb-4">
+          <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M3 3h14v2H3V3zm0 4h14v2H3V7zm0 4h14v2H3v-2z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent scroll-reveal ">
+          2. Connect & Build Bots
+        </h3>
+        <p class="scroll-reveal font-open">Paste your bot token and visually design bot flows — no coding needed.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="card bg-base-100 p-6 shadow scroll-reveal">
+        <div class="flex items-center justify-center mb-4">
+          <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 5a2 2 0 012-2h1.586A2 2 0 017 3h6a2 2 0 011.414.586L17 5H18a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V5z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent scroll-reveal ">
+          3. Manage & Broadcast
+        </h3>
+        <p class="scroll-reveal font-open">Monitor subscribers, send broadcasts, and track performance.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Features Section -->
+<section id="features" class="py-20 bg-base-100 px-4 sm:px-6">
+  <div class="max-w-5xl mx-auto text-center">
+    
+    <h2 class="text-3xl sm:text-4xl font-bold mb-6 scroll-reveal uppercase tracking-wide font-dancing">
+      Why Choose TeleGraph?
+    </h2>
+    <div class="h-1 w-24 mx-auto bg-primary rounded scroll-reveal"></div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-10">
+      
+      <!-- Card 1 -->
+      <div class="card bg-neutral p-6 shadow text-center scroll-reveal ">
+        <div class="mb-4 text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 scroll-reveal text-accent">Bot Management</h3>
+        <p class="scroll-reveal font-open">
+          Control multiple Telegram bots from one central dashboard. Add, remove, and monitor with ease.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card bg-neutral p-6 shadow text-center scroll-reveal ">
+        <div class="mb-4 text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 scroll-reveal text-accent">Subscriber Insights</h3>
+        <p class="scroll-reveal font-open">
+          View real-time data about your subscribers, their activity, and engagement rates.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card bg-neutral p-6 shadow text-center scroll-reveal ">
+        <div class="mb-4 text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v16h16V4H4zm4 4h8v8H8V8z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 scroll-reveal text-accent">Broadcast Messages</h3>
+        <p class="scroll-reveal font-open">
+          Send announcements or promotions to your entire subscriber base with a single click.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Who This App Is For Section -->
+<section id="who-for" class="py-20 bg-base-200 px-4">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8 scroll-reveal  uppercase tracking-wide font-dancing">Who This App Is For</h2>
+<div class="h-1 w-24 mx-auto bg-primary rounded scroll-reveal"></div>
+
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <div class="card bg-base-100 p-6 shadow scroll-reveal flex flex-col items-center text-center">
+        <div class="mb-4">
+          <!-- Small Business Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v13h18V7H3zM16 3v4M8 3v4m4-4v4M5 11h14" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 scroll-reveal ">Small Business Owners</h3>
+        <p class="scroll-reveal font-open">No technical skills? No problem. Set up and manage your Telegram bots with just a few clicks.</p>
+      </div>
+
+      <div class="card bg-base-100 p-6 shadow scroll-reveal flex flex-col items-center text-center">
+        <div class="mb-4">
+          <!-- Entrepreneurs Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 scroll-reveal ">Entrepreneurs</h3>
+        <p class="scroll-reveal font-open">Turn Telegram into a growth tool for your business — without hiring developers.</p>
+      </div>
+
+      <div class="card bg-base-100 p-6 shadow scroll-reveal flex flex-col items-center text-center">
+        <div class="mb-4">
+          <!-- Community Builders Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-4-4h-1M7 20H2v-2a4 4 0 014-4h1m4-4a4 4 0 110-8 4 4 0 010 8zm6 4a4 4 0 100-8 4 4 0 000 8z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 scroll-reveal ">Community Builders</h3>
+        <p class="scroll-reveal font-open">Easily grow and engage your Telegram audience without worrying about the technical setup.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20 bg-base-200 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-6 scroll-reveal  uppercase tracking-wide font-dancing">
+        Simple, Transparent Pricing
+      </h2>
+<div class="h-1 w-24 mx-auto bg-accent rounded scroll-reveal"></div>
+
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-10">
+        <div
+          class="card bg-base-100 p-6 shadow scroll-reveal bg-gradient-telegraph w-full"
+        >
+          <h3 class="text-2xl font-bold mb-2">Free Plan</h3>
+          <p class="font-open">Perfect for testing with one bot.</p>
+          <p class="text-3xl font-bold my-4">$0</p>
+          <ul class="mb-4 text-left">
+            <li>✔ 1 Bot</li>
+            <li>✔ Up to 100 Subscribers</li>
+            <li>✔ Basic Analytics</li>
+          </ul>
+          <button class="btn btn-accent btn-block w-full sm:w-auto">
+            Get Started
+          </button>
+        </div>
+        <div
+          class="card bg-base-100 p-6 shadow border-accent border-2 scroll-reveal bg-gradient-telegraph-bottom w-full"
+        >
+          <h3 class="text-2xl font-bold mb-2">Pro Plan</h3>
+          <p class="font-open">For growing projects and serious users.</p>
+          <p class="text-3xl font-bold my-4">$7/mo</p>
+          <ul class="mb-4 text-left">
+            <li>✔ Up to 5 Bots</li>
+            <li>✔ 10,000 Subscribers</li>
+            <li>✔ Advanced Analytics</li>
+            <li>✔ Priority Support</li>
+          </ul>
+          <button class="btn btn-accent btn-block w-full sm:w-auto">Get Pro</button>
+        </div>
+        <div
+          class="card bg-base-100 p-6 shadow scroll-reveal bg-gradient-telegraph3 w-full"
+        >
+          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+          <p class="font-open">Need something bigger? We got you.</p>
+          <p class="text-3xl font-bold my-4">Custom</p>
+          <ul class="mb-4 text-left">
+            <li>✔ Unlimited Bots</li>
+            <li>✔ Unlimited Subscribers</li>
+            <li>✔ Dedicated Support</li>
+            <li>✔ Custom Features</li>
+          </ul>
+          <button class="btn btn-block btn-accent w-full sm:w-auto">
+            Contact Us
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="feedback" class="py-20 bg-base-200 px-4 sm:px-6">
+    <div
+      class="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10"
+    >
+      <!-- Toast div -->
+      <div
+        id="toast"
+        class="toast toast-center fixed top-20 left-1/2 transform -translate-x-1/2 space-y-2 z-50"
+      ></div>
+
+      <!-- Form Section -->
+      <div class="md:w-1/2 text-center md:text-left w-full max-w-md mx-auto md:mx-0">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6 scroll-reveal  uppercase tracking-wide font-dancing">
+          Help Us Improve
+        </h2>
+
+ 
+        <p class="mb-8 scroll-reveal font-open">
+          Tried TeleGraph? Tell us what you think or how we can make it better.
+        </p>
+
+        <form id="feedbackForm" class="space-y-4">
+          <textarea
+            name="message"
+            placeholder="Your feedback..."
+            required
+            class="textarea textarea-bordered w-full scroll-reveal"
+            rows="4"
+          ></textarea>
+
+          <input
+            type="name"
+            name="name"
+            placeholder="Your name"
+            class="input input-bordered w-full scroll-reveal"
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Optional: Your email (if you want a reply)"
+            class="input input-bordered w-full validator scroll-reveal"
+          />
+          <div class="validator-hint">Enter valid email address</div>
+
+          <button type="submit" class="btn btn-primary w-full scroll-reveal">
+            Send Feedback
+          </button>
+        </form>
+      </div>
+
+      <!-- Image Section -->
+      <div class="md:w-1/2 flex justify-center w-full max-w-xs md:max-w-sm scroll-reveal">
+        <img
+          src="/assets/feedbackImg.svg"
+          alt="Feedback Illustration"
+          class="max-w-full h-auto"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 bg-base-100 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 scroll-reveal  uppercase tracking-wide font-dancing">
+        Frequently Asked Questions
+      </h2>
+<div class="h-1 w-24 mx-auto bg-primary rounded scroll-reveal"></div>
+
+      <div class="space-y-4">
+        <div class="collapse bg-base-200 scroll-reveal">
+          <input type="checkbox" />
+          <div class="collapse-title text-lg font-medium">
+            How do I connect my Telegram bot?
+          </div>
+          <div class="collapse-content">
+            <p class="font-open">Simply paste your bot token on the dashboard. We'll handle the rest.</p>
+          </div>
+        </div>
+        <div class="collapse bg-base-200 scroll-reveal">
+          <input type="checkbox" />
+          <div class="collapse-title text-lg font-medium">Is this service secure?</div>
+          <div class="collapse-content">
+            <p class="font-open">
+              Yes, your bot tokens and data are encrypted and stored securely.
+            </p>
+          </div>
+        </div>
+        <div class="collapse bg-base-200 scroll-reveal">
+          <input type="checkbox" />
+          <div class="collapse-title text-lg font-medium">Can I use this for free?</div>
+          <div class="collapse-content">
+            <p class="font-open">
+              Absolutely. The free plan lets you manage one bot and up to 100
+              subscribers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer
+    class="footer footer-horizontal footer-center bg-primary text-primary-content p-10 scroll-reveal px-4 sm:px-6"
+  >
+    <aside>
+      <img src="/assets/logoImg.svg" class="h-10" alt="" />
+      <p class="font-bold">TeleGraph.wtf</p>
+      <p class="font-open">Copyright © <%= new Date().getFullYear() %> - All rights reserved</p>
+    </aside>
+    <nav>
+      <div class="grid grid-flow-col gap-4">
+        <a>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            class="fill-current"
+          >
+            <path
+              d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+            ></path>
+          </svg>
+        </a>
+        <a>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            class="fill-current"
+          >
+            <path
+              d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+            ></path>
+          </svg>
+        </a>
+        <a>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            class="fill-current"
+          >
+            <path
+              d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </footer>
+
+  <script src="/js/home.js"></script>
+</body>
+
+</html>

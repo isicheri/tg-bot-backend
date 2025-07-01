@@ -19,6 +19,7 @@ model User {
   username String @unique
   password String 
   bot Bot[]
+  feedback Feedback[]
 
   
   createdAt DateTime @default(now())
@@ -61,3 +62,12 @@ model Broadcast {
   createdAt   DateTime @default(now())
 }
 
+
+model Feedback {
+  id        String   @id @default(uuid())
+  message   String
+  email     String?
+  userId    String? 
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
