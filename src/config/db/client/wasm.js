@@ -120,8 +120,24 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   username: 'username',
   password: 'password',
+  profileImg: 'profileImg',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+};
+
+exports.Prisma.TeamScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  ownerId: 'ownerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+};
+
+exports.Prisma.TeamMemberScalarFieldEnum = {
+  id: 'id',
+  teamId: 'teamId',
+  userId: 'userId',
+  role: 'role',
 };
 
 exports.Prisma.BotScalarFieldEnum = {
@@ -130,6 +146,8 @@ exports.Prisma.BotScalarFieldEnum = {
   name: 'name',
   username: 'username',
   userId: 'userId',
+  teamId: 'teamId',
+  logicFlow: 'logicFlow',
   createdAt: 'createdAt',
 };
 
@@ -164,6 +182,11 @@ exports.Prisma.SortOrder = {
   desc: 'desc',
 };
 
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive',
@@ -174,8 +197,21 @@ exports.Prisma.NullsOrder = {
   last: 'last',
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull,
+};
+exports.TeamMemberRole = exports.$Enums.TeamMemberRole = {
+  OWNER: 'OWNER',
+  ADMIN: 'ADMIN',
+  MEMBER: 'MEMBER',
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
+  Team: 'Team',
+  TeamMember: 'TeamMember',
   Bot: 'Bot',
   Subscriber: 'Subscriber',
   Broadcast: 'Broadcast',
