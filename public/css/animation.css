@@ -41,3 +41,44 @@
 .font-open {
     font-family: 'Open Sans', sans-serif;
 }
+
+/* CSS */
+.container {
+  position: relative;
+  background-color: black;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    rgba(226, 232, 240, 0.15),
+    transparent 70%
+  ), 
+  #000000;
+}
+
+
+/* CSS */
+.container-indigo {
+  position: relative;
+  min-height: 100vh; /* full viewport height */
+  width: 100%;
+  background-color: black;
+}
+
+.container-indigo::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    rgba(99, 102, 241, 0.25),
+    transparent 70%
+  ),
+  #000000;
+}

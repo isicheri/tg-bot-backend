@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/config/db/client"
@@ -15,35 +9,65 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  username String @unique
+  id       String        @id @default(uuid())
+  username String        @unique
   password String 
-  bot Bot[]
+  bot      Bot[]
   feedback Feedback[]
+  teams    TeamMember[]  // Users can belong to teams
+  teamsOwned Team[] @relation("UserOwnedTeams")
 
-  
+  profileImg String?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-model Bot {
-  id String @id @default(uuid())
-  token String @unique
-  name String
-  username String
-  userId String 
-  user User @relation(fields: [userId],references: [id])
+model Team {
+  id        String   @id @default(uuid())
+  name      String
+  ownerId   String
+   owner     User     @relation("UserOwnedTeams", fields: [ownerId], references: [id])
+  members   TeamMember[]
+  bots      Bot[]
 
-    subscribers Subscriber[]
-  broadcasts Broadcast[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TeamMember {
+  id      String @id @default(uuid())
+  teamId  String
+  userId  String
+  role    TeamMemberRole
+
+  team    Team   @relation(fields: [teamId], references: [id])
+  user    User   @relation(fields: [userId], references: [id])
+}
+
+model Bot {
+  id        String @id @default(uuid())
+  token     String @unique
+  name      String
+  username  String
+  userId    String? 
+  teamId    String? 
+
+  logicFlow Json?
+
+  user      User?   @relation(fields: [userId], references: [id])
+  team      Team?   @relation(fields: [teamId], references: [id])
+
+  subscribers Subscriber[]
+  broadcasts  Broadcast[]
 
   createdAt DateTime @default(now())
 }
 
 model Subscriber {
-  id String @id @default(uuid())
-  chatId     String   // Telegram unique chat ID for user
-  username   String?  // May be null if user has no username
+  id         String   @id @default(uuid())
+  chatId     String   
+  username   String?  
   firstName  String?
   lastName   String?
   botId      String
@@ -53,7 +77,7 @@ model Subscriber {
 }
 
 model Broadcast {
-  id String @id @default(uuid())
+  id          String   @id @default(uuid())
   message     String
   botId       String
   bot         Bot      @relation(fields: [botId], references: [id])
@@ -62,7 +86,6 @@ model Broadcast {
   createdAt   DateTime @default(now())
 }
 
-
 model Feedback {
   id        String   @id @default(uuid())
   message   String
@@ -70,4 +93,12 @@ model Feedback {
   userId    String? 
   user      User?    @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
+}
+
+
+
+enum TeamMemberRole {
+  OWNER
+  ADMIN
+  MEMBER
 }

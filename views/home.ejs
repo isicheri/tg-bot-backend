@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/css/main.css" />
 </head>
 
-<body class="bg-base-200">
+<body class="container">
 
   <!-- Navbar with fixed positioning -->
   <div
@@ -103,7 +103,7 @@
   </div>
 
   <!-- Guide Section -->
-<section id="guide" class="py-20 bg-base-200 px-4 sm:px-6">
+<section id="guide" class="py-20  px-4 sm:px-6">
   <div class="max-w-5xl mx-auto text-center">
 
   <h2 class="text-3xl sm:text-4xl font-bold mb-6 scroll-reveal uppercase tracking-wide font-dancing">
@@ -158,7 +158,7 @@
 
 
 <!-- Features Section -->
-<section id="features" class="py-20 bg-base-100 px-4 sm:px-6">
+<section id="features" class="py-20  px-4 sm:px-6">
   <div class="max-w-5xl mx-auto text-center">
     
     <h2 class="text-3xl sm:text-4xl font-bold mb-6 scroll-reveal uppercase tracking-wide font-dancing">
@@ -212,7 +212,7 @@
 </section>
 
 <!-- Who This App Is For Section -->
-<section id="who-for" class="py-20 bg-base-200 px-4">
+<section id="who-for" class="py-20  px-4">
   <div class="max-w-5xl mx-auto text-center">
     <h2 class="text-3xl md:text-4xl font-bold mb-8 scroll-reveal  uppercase tracking-wide font-dancing">Who This App Is For</h2>
 <div class="h-1 w-24 mx-auto bg-primary rounded scroll-reveal"></div>
@@ -258,65 +258,77 @@
 </section>
 
   <!-- Pricing Section -->
-  <section id="pricing" class="py-20 bg-base-200 px-4 sm:px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl sm:text-4xl font-bold mb-6 scroll-reveal  uppercase tracking-wide font-dancing">
-        Simple, Transparent Pricing
-      </h2>
-<div class="h-1 w-24 mx-auto bg-accent rounded scroll-reveal"></div>
+  <section id="pricing" class="py-20  px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-6 scroll-reveal uppercase tracking-wide font-dancing">
+      Simple, Transparent Pricing
+    </h2>
+    <div class="h-1 w-24 mx-auto bg-accent rounded scroll-reveal"></div>
 
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-10">
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-10">
-        <div
-          class="card bg-base-100 p-6 shadow scroll-reveal bg-gradient-telegraph w-full"
-        >
-          <h3 class="text-2xl font-bold mb-2">Free Plan</h3>
-          <p class="font-open">Perfect for testing with one bot.</p>
-          <p class="text-3xl font-bold my-4">$0</p>
-          <ul class="mb-4 text-left">
-            <li>✔ 1 Bot</li>
-            <li>✔ Up to 100 Subscribers</li>
-            <li>✔ Basic Analytics</li>
-          </ul>
-          <button class="btn btn-accent btn-block w-full sm:w-auto">
-            Get Started
-          </button>
-        </div>
-        <div
-          class="card bg-base-100 p-6 shadow border-accent border-2 scroll-reveal bg-gradient-telegraph-bottom w-full"
-        >
-          <h3 class="text-2xl font-bold mb-2">Pro Plan</h3>
-          <p class="font-open">For growing projects and serious users.</p>
-          <p class="text-3xl font-bold my-4">$7/mo</p>
-          <ul class="mb-4 text-left">
-            <li>✔ Up to 5 Bots</li>
-            <li>✔ 10,000 Subscribers</li>
-            <li>✔ Advanced Analytics</li>
-            <li>✔ Priority Support</li>
-          </ul>
-          <button class="btn btn-accent btn-block w-full sm:w-auto">Get Pro</button>
-        </div>
-        <div
-          class="card bg-base-100 p-6 shadow scroll-reveal bg-gradient-telegraph3 w-full"
-        >
-          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
-          <p class="font-open">Need something bigger? We got you.</p>
-          <p class="text-3xl font-bold my-4">Custom</p>
-          <ul class="mb-4 text-left">
-            <li>✔ Unlimited Bots</li>
-            <li>✔ Unlimited Subscribers</li>
-            <li>✔ Dedicated Support</li>
-            <li>✔ Custom Features</li>
-          </ul>
-          <button class="btn btn-block btn-accent w-full sm:w-auto">
-            Contact Us
-          </button>
-        </div>
+      <!-- Free Plan -->
+      <div class="card bg-base-100 p-6 shadow scroll-reveal bg-gradient-telegraph w-full">
+        <h3 class="text-2xl font-bold mb-2">Free Plan</h3>
+        <p class="font-open mb-4">
+          Ideal for individuals or small projects testing the platform. Manage up to 1 Telegram bot with basic monitoring and limited broadcast capacity. Enjoy secure single-user access and the ability to gather user feedback—all at no cost.
+        </p>
+        <p class="text-3xl font-bold my-4">$0</p>
+        <ul class="mb-4 text-left">
+          <li>✔ 1 Bot</li>
+          <li>✔ Up to 100 Subscribers</li>
+          <li>✔ Basic Analytics</li>
+          <li>✔ Single-user Access</li>
+        </ul>
+        <button class="btn btn-accent btn-block w-full sm:w-auto">
+          Get Started
+        </button>
       </div>
-    </div>
-  </section>
 
-  <section id="feedback" class="py-20 bg-base-200 px-4 sm:px-6">
+      <!-- Pro Plan -->
+      <div class="card bg-base-100 p-6 shadow border-accent border-2 scroll-reveal bg-gradient-telegraph-bottom w-full">
+        <h3 class="text-2xl font-bold mb-2">Pro Plan</h3>
+        <p class="font-open mb-4">
+          Designed for growing projects and small businesses, this plan supports up to 5 Telegram bots and offers full bot monitoring, advanced analytics, and broadcast scheduling. Collaborate easily with teams of up to 5 members and receive priority customer support.
+        </p>
+        <p class="text-3xl font-bold my-4">$10/mo</p>
+        <ul class="mb-4 text-left">
+          <li>✔ Up to 5 Bots</li>
+          <li>✔ 10,000 Subscribers</li>
+          <li>✔ Advanced Analytics</li>
+          <li>✔ Broadcast Scheduling & Templates</li>
+          <li>✔ Team Collaboration (5 members)</li>
+          <li>✔ Priority Support</li>
+        </ul>
+        <button class="btn btn-accent btn-block w-full sm:w-auto">Get Pro</button>
+      </div>
+
+      <!-- Agency Plan -->
+      <div class="card bg-base-100 p-6 shadow scroll-reveal bg-gradient-telegraph3 w-full">
+        <h3 class="text-2xl font-bold mb-2">Agency Plan</h3>
+        <p class="font-open mb-4">
+          Perfect for agencies and large teams needing scalable, comprehensive Telegram bot management. Enjoy unlimited bots and subscribers, advanced analytics, AI-powered features, and dedicated support with custom solutions tailored to your business needs.
+        </p>
+        <p class="text-3xl font-bold my-4">$75/mo</p>
+        <ul class="mb-4 text-left">
+          <li>✔ Unlimited Bots</li>
+          <li>✔ Unlimited Subscribers</li>
+          <li>✔ Advanced Analytics & AI Features</li>
+          <li>✔ Unlimited Team Members</li>
+          <li>✔ Dedicated Account Manager & Support</li>
+          <li>✔ Custom Integrations & Features</li>
+        </ul>
+        <button class="btn btn-block btn-accent w-full sm:w-auto">
+          Get started
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <section id="feedback" class="py-20  px-4 sm:px-6">
     <div
       class="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10"
     >
@@ -379,7 +391,7 @@
   </section>
 
   <!-- FAQ Section -->
-  <section id="faq" class="py-20 bg-base-100 px-4 sm:px-6">
+  <section id="faq" class="py-20  px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
       <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 scroll-reveal  uppercase tracking-wide font-dancing">
         Frequently Asked Questions
