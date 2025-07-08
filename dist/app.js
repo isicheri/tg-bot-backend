@@ -35,7 +35,17 @@ App.use(ratelimiter_1.default);
 //   },
 // });
 // App.use(cookieParser());
-App.use((0, helmet_1.default)());
+App.use(helmet_1.default.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com"],
+        imgSrc: ["'self'", "data:"],
+        objectSrc: ["'none'"],
+        upgradeInsecureRequests: [],
+    },
+}));
 App.use(express_1.default.json());
 App.use((0, express_session_1.default)({
     // store: new PgSession({

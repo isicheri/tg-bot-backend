@@ -2,48 +2,45 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const auth_middleware_1 = require("./middleware/auth.middleware");
+const user_local_middleware_1 = require("./middleware/user.local.middleware");
 const viewRouter = (0, express_1.Router)();
 viewRouter.get('/', (req, res) => {
     res.render('home');
 });
+viewRouter.get('/pricing', (req, res) => {
+    res.render('pricing');
+});
 viewRouter.get('/signin', (req, res) => {
     res.render('signin');
 });
-viewRouter.get('/dashboard', auth_middleware_1.stopCache, auth_middleware_1.authenticatedMiddleware, (req, res) => {
-    res.send(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/assets/logoImg.svg" type="image/x-icon" />
-      <title>Dashboard - Coming Soon</title>
-      <style>
-        body {
-          display: flex;
-          height: 100vh;
-          margin: 0;
-          background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-          color: white;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          user-select: none;
-        }
-        h1 {
-          font-size: 4rem;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          font-weight: 900;
-          text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-        }
-      </style>
-    </head>
-    <body>
-      <h1>Coming Soon</h1>
-    </body>
-    </html>
-  `);
+viewRouter.get('/user/dashboard', auth_middleware_1.authenticatedMiddleware, user_local_middleware_1.attachUserToLocals, async (req, res) => {
+    res.render('dashboard', {
+        currentPage: 'dashboard',
+    });
+});
+viewRouter.get('/user/bots', auth_middleware_1.authenticatedMiddleware, user_local_middleware_1.attachUserToLocals, async (req, res) => {
+    res.render('bot', {
+        currentPage: 'bots',
+    });
+});
+viewRouter.get('/user/broadcast', auth_middleware_1.authenticatedMiddleware, user_local_middleware_1.attachUserToLocals, async (req, res) => {
+    res.render('broadcast', {
+        currentPage: 'broadcast',
+    });
+});
+viewRouter.get('/user/subscriber', auth_middleware_1.authenticatedMiddleware, user_local_middleware_1.attachUserToLocals, async (req, res) => {
+    res.render('subscriber', {
+        currentPage: 'subscriber',
+    });
+});
+viewRouter.get('/user/teams', auth_middleware_1.authenticatedMiddleware, user_local_middleware_1.attachUserToLocals, async (req, res) => {
+    res.render('teams', {
+        currentPage: 'teams',
+    });
+});
+viewRouter.get('/user/settings', auth_middleware_1.authenticatedMiddleware, user_local_middleware_1.attachUserToLocals, async (req, res) => {
+    res.render('settings', {
+        currentPage: 'settings',
+    });
 });
 exports.default = viewRouter;

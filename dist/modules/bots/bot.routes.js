@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../../middleware/auth.middleware");
+const response_handler_1 = require("../../libs/handlers/response.handler");
+const bots_controller_1 = require("./bots.controller");
+const broadcast_controller_1 = require("../broadcast/broadcast.controller");
+const botRouter = (0, express_1.Router)();
+botRouter.post('/webhook/:botId', bots_controller_1.webhookController);
+botRouter.use(auth_middleware_1.authenticatedMiddleware);
+botRouter.post('/create', (0, response_handler_1.responseHandler)(bots_controller_1.createBotController));
+botRouter.get('/:botId/broadcasts', (0, response_handler_1.responseHandler)(broadcast_controller_1.getRecentBroadcasts));
+botRouter.get('/user-bot', (0, response_handler_1.responseHandler)(bots_controller_1.getUserBotCount));
+exports.default = botRouter;

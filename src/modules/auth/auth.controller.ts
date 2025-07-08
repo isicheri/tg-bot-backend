@@ -47,7 +47,7 @@ export const login = (req: Request, res: Response, next: NextFunction) => {
   logger.info('user trying to login');
   passport.authenticate(
     'local',
-    { session: false },
+    { session: true },
     (err: HttpMainError, user: { id: string; username: string }, info: { message: string }) => {
       if (err) return next(err);
       if (!user)

@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../../middleware/auth.middleware");
+const response_handler_1 = require("../../libs/handlers/response.handler");
+const broadcast_controller_1 = require("./broadcast.controller");
+const broadcastRouter = (0, express_1.Router)();
+broadcastRouter.use(auth_middleware_1.authenticatedMiddleware);
+broadcastRouter.post('/:botId', (0, response_handler_1.responseHandler)(broadcast_controller_1.sendBroadcast));
+broadcastRouter.get('/recents/:botId', (0, response_handler_1.responseHandler)(broadcast_controller_1.getRecentBroadcasts));
+broadcastRouter.get('/count-message/:botId', (0, response_handler_1.responseHandler)(broadcast_controller_1.getBotBroadCastsCountController));
+exports.default = broadcastRouter;

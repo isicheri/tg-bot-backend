@@ -1,5 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const response_handler_1 = require("../../libs/handlers/response.handler");
+const user_controller_1 = require("./user.controller");
+const auth_middleware_1 = require("../../middleware/auth.middleware");
 const userRouter = (0, express_1.Router)();
+userRouter.use(auth_middleware_1.authenticatedMiddleware);
+userRouter.get('/bots', (0, response_handler_1.responseHandler)(user_controller_1.getUserbotsPersonalandTeamController));
+userRouter.get('/count-team', (0, response_handler_1.responseHandler)(user_controller_1.getUserOwnedTeamCountController));
 exports.default = userRouter;

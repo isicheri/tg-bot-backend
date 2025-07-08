@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const response_handler_1 = require("../../libs/handlers/response.handler");
+const subscribers_controller_1 = require("./subscribers.controller");
+const auth_middleware_1 = require("../../middleware/auth.middleware");
+const subscriberRouter = (0, express_1.Router)();
+subscriberRouter.use(auth_middleware_1.authenticatedMiddleware);
+subscriberRouter.get('/sub-count/:botId', (0, response_handler_1.responseHandler)(subscribers_controller_1.totalBotSubsciberCountController));
+subscriberRouter.get('/growth-rate/:botId', (0, response_handler_1.responseHandler)(subscribers_controller_1.getSubscriberGrowthRate));
+subscriberRouter.get('/chart-growth-rate/:botId', (0, response_handler_1.responseHandler)(subscribers_controller_1.subscriberGrowthChartController));
+exports.default = subscriberRouter;

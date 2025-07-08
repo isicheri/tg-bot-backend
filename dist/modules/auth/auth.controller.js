@@ -44,7 +44,7 @@ const register = async (req, res) => {
 exports.register = register;
 const login = (req, res, next) => {
     app_1.logger.info('user trying to login');
-    passport_1.default.authenticate('local', { session: false }, (err, user, info) => {
+    passport_1.default.authenticate('local', { session: true }, (err, user, info) => {
         if (err)
             return next(err);
         if (!user)

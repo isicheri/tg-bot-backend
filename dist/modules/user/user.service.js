@@ -13,5 +13,15 @@ class UserService {
     async findUserById(id) {
         return await client_1.default.user.findUnique({ where: { id } });
     }
+    async updateUserPassword(username, password) {
+        return await client_1.default.user.update({ data: { password }, where: { username } });
+    }
+    async getUserOwnedTeamCount(userId) {
+        return await client_1.default.team.count({
+            where: {
+                ownerId: userId,
+            },
+        });
+    }
 }
 exports.UserService = UserService;

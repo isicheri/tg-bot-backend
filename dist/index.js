@@ -32,8 +32,19 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importStar(require("./app"));
+const client_1 = __importDefault(require("./config/db/client"));
+client_1.default
+    .$connect()
+    .then(() => app_1.logger.success('Db connectec successfully..'))
+    .catch((error) => {
+    app_1.logger.error(`Failed to connect to DB:${error}`);
+    process.exit(1);
+});
 app_1.default.listen(3000, () => {
     app_1.logger.info(`App started on port: 3000`);
 });

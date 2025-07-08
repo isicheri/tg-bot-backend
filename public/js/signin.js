@@ -71,7 +71,7 @@
           hideloader()
           showToast(data.message, "success");
           alertbox.classList.add("hidden")
-          setTimeout(() => window.location.href = "/dashboard", 1500);
+          setTimeout(() => window.location.href = "/user/dashboard", 1500);
         } else {
           hideloader()
           showToast(data.message, "error");

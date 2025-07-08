@@ -82,3 +82,68 @@
   ),
   #000000;
 }
+
+.glass {
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass_div {
+  /* From https://css.glass */
+background: rgba(52, 55, 69, 0.22);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(12.1px);
+-webkit-backdrop-filter: blur(12.1px);
+border: 1px solid rgba(52, 55, 69, 0.3);
+}
+
+.blob {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.7;
+  z-index: 0;
+  animation: blobFloat 20s infinite alternate ease-in-out;
+}
+
+/* First Blob Color */
+.blob:nth-child(1) {
+  background: oklch(42% 0.199 265.638);
+  top: -50px;
+  left: -50px;
+}
+
+/* Second Blob Color */
+.blob:nth-child(2) {
+  background: oklch(64% 0.222 41.116);
+  bottom: -50px;
+  right: -50px;
+}
+
+/* Simple Floating Animation */
+@keyframes blobFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -20px) scale(1.1);
+  }
+  100% {
+    transform: translate(-20px, 20px) scale(1);
+  }
+}
+
+
+.side_glass {
+  background: rgba(52, 55, 69, 0.22);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(12.1px);
+-webkit-backdrop-filter: blur(12.1px);
+}
