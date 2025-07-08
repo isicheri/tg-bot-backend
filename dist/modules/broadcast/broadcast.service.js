@@ -19,7 +19,7 @@ class BroadCastService {
             await bot.sendMessage(chatId, message);
         }
         catch (error) {
-            if (typeof error === "object" && error !== null && 'response' in error) {
+            if (typeof error === 'object' && error !== null && 'response' in error) {
                 const err = error;
                 if (err.response?.statusCode === 403) {
                     app_1.logger.warn(`User ${chatId} blocked the bot.`);
