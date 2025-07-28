@@ -1,4 +1,8 @@
 console.log("bot");
+ const toast = document.getElementById('toast');
+ const loader = document.getElementById('loader');
+  const modal = document.getElementById('createBotModal');
+
 
 document.addEventListener("DOMContentLoaded",async() => {
 const botSelect = document.getElementById("botSelect");
@@ -6,7 +10,6 @@ const botGrid = document.getElementById("botGrid");
   
  const openModalBtn = document.getElementById('openModalBtn');
   const cancelModalBtn = document.getElementById('cancelModalBtn');
-  const modal = document.getElementById('createBotModal');
   const teamSelect = document.getElementById('teamSelect');
 
 
@@ -160,3 +163,58 @@ const populateTeamSelect = async (teamSelect) => {
   }
 };
 
+    function showToast(message, type = "info") {
+      toast.innerHTML = `<div class="alert alert-${type} bg-${type}">${message}</div>`;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+
+    function showloader() {
+      loader.classList.remove('hidden')
+    }
+    function hideloader() {
+      loader.classList.add('hidden');
+    }
+
+const createBotForm = document.getElementById('createBotForm');
+
+createBotForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const botToken = document.getElementById('botToken').value.trim();
+  const teamId = document.getElementById('teamSelect').value;
+  
+  if (!botToken) {
+    return showToast("Please enter a bot token", "warning");
+  }
+
+    modal.classList.add('my_hidden');
+
+
+  showloader();
+
+  // try {
+  //   showloader();
+  //   const res = await fetch('/api/bot/create', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ botToken, teamId })
+  //   });
+
+  //   const data = await res.json();
+
+  //   if (res.ok) {
+  //     hideloader();
+  //     showToast(data.message, "success");
+  //     modal.classList.add('my_hidden');
+  //     location.reload();
+  //   } else {
+  //     hideloader();
+  //     showToast(data.message, "error");
+  //   }
+  // } catch (error) {
+  //   hideloader();
+  //   console.error(error);
+  //   showToast("Something went wrong!", "error");
+  // }
+}); 
