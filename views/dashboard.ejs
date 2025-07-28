@@ -6,7 +6,8 @@
   <title class="leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Dashboard - TeleGraph</title>
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="/css/animation.css" />
-<script src="/js/apexcharts.min.js"></script>
+<script src="/js/apexcharts.min.js" defer></script>
+  <script src="/js/dashboard.js" defer></script>
 </head>
 <body class="min-h-screen flex md:overflow-hidden overflow-auto">
 
@@ -117,7 +118,7 @@
                 </svg>
                 <h2 class="text-sm text-gray-400">Teams</h2>
               </div>
-              <p class="text-2xl font-bold" id="teamCardEL">2</p>
+              <p class="text-2xl font-bold" id="teamCardEL"></p>
             </div>
             <div class="card bg-base-100 shadow p-4 glass_div flex flex-col gap-2">
               <div class="flex items-center gap-2">
@@ -432,6 +433,5 @@
     </div>
   </aside>
 
-  <script src="/js/dashboard.js"></script>
 </body>
 </html>

@@ -13,6 +13,12 @@ viewRouter.get('/pricing', (req, res) => {
 viewRouter.get('/signin', (req, res) => {
     res.render('signin');
 });
+viewRouter.get('/user/forgot-password', (req, res) => {
+    res.render('forgotpassword');
+});
+viewRouter.get("/user/reset-password", async (_, res) => {
+    res.render("resetpassword");
+});
 viewRouter.get('/user/dashboard', auth_middleware_1.authenticatedMiddleware, user_local_middleware_1.attachUserToLocals, async (req, res) => {
     res.render('dashboard', {
         currentPage: 'dashboard',

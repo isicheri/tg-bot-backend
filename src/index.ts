@@ -3,7 +3,7 @@ import prismaClient from './config/db/client';
 
 prismaClient
   .$connect()
-  .then(() => logger.success('Db connectec successfully..'))
+  .then(() => logger.success('Database connected successfully..'))
   .catch((error) => {
     logger.error(`Failed to connect to DB:${error}`);
     process.exit(1);

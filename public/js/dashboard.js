@@ -250,7 +250,7 @@ try {
         },
         dataLabels: { enabled: false },
         stroke: { curve: 'smooth' },
-        colors: ['#22c55e'], // Tailwind green-500
+        colors: ['#22c55e'],
         fill: {
           type: 'gradient',
           gradient: {

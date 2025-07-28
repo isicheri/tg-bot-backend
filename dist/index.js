@@ -40,7 +40,7 @@ const app_1 = __importStar(require("./app"));
 const client_1 = __importDefault(require("./config/db/client"));
 client_1.default
     .$connect()
-    .then(() => app_1.logger.success('Db connectec successfully..'))
+    .then(() => app_1.logger.success('Database connected successfully..'))
     .catch((error) => {
     app_1.logger.error(`Failed to connect to DB:${error}`);
     process.exit(1);

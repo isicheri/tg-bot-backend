@@ -10,6 +10,7 @@ const feedback_routes_1 = __importDefault(require("./modules/feedback/feedback.r
 const bot_routes_1 = __importDefault(require("./modules/bots/bot.routes"));
 const broadcast_routes_1 = __importDefault(require("./modules/broadcast/broadcast.routes"));
 const subscribers_routes_1 = __importDefault(require("./modules/subscribers/subscribers.routes"));
+const teams_routes_1 = __importDefault(require("./modules/teams/teams.routes"));
 const indexRouter = (0, express_1.Router)();
 indexRouter.use('/auth', auth_routes_1.default);
 indexRouter.use('/user', user_routes_1.default);
@@ -17,4 +18,5 @@ indexRouter.use('/feedback', feedback_routes_1.default);
 indexRouter.use('/bot', bot_routes_1.default);
 indexRouter.use('/broadcast', broadcast_routes_1.default);
 indexRouter.use('/subscriber', subscribers_routes_1.default);
+indexRouter.use('/teams', teams_routes_1.default);
 exports.default = indexRouter;

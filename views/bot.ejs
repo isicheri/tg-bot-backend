@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bots - TeleGraph</title>
-  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/main.css"/>
   <link rel="stylesheet" href="/css/animation.css" />
+  <!-- <link rel="stylesheet" href="/css/modal.css" /> -->
+  <script src="/js/bot.js" defer></script>
 </head>
 <body class="min-h-screen flex md:overflow-hidden overflow-auto">
 
@@ -23,8 +25,13 @@
           </label>
           <!-- <h1 class="text-xl font-bold hidden md:block">Dashboard</h1> -->
         </div>
-        <div class="flex items-center gap-4">
+       <div class="flex items-center gap-4">
           <p><%= username %></p>
+         <div class="w-full sm:w-auto">
+  <select id="botSelect" class="select select-bordered w-full sm:w-40">
+    <option disabled selected>Select Bot</option>
+  </select>
+</div>
           <div class="avatar">
             <div class="mask mask-hexagon-2 w-10">
               <img src="<%= profilePic || '/assets/default-avatar.svg' %>" alt="Profile" />
@@ -35,7 +42,41 @@
 
       <div class="flex-1 flex flex-col p-6 space-y-6 overflow-auto md:ml-64">
         <!-- Main Content -->
-       <h2 class="text-4xl sm:text-5xl font-bold italic font-dancing scroll-reveal leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Bots</h2>
+         <div class="flex items-center justify-between mb-4">
+  <h2 class="text-xl font-semibold">Bots</h2>
+<button id="openModalBtn" class="create-bot-btn">Create Bot +</button>
+</div>
+       <div id="botGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+  <!-- JS will populate bot cards here -->
+       </div>
+       
+
+
+    <!-- Custom Modal -->
+
+    <div id="createBotModal" class="custom-modal my_hidden">
+  <div class="modal-content">
+    <h2>Create a Bot</h2>
+
+    <form id="createBotForm" className="bg-neutral-900! p-4 rounded-lg space-y-4">
+      <label for="botName">Bot Token</label>
+      <input type="text" id="botToken" name="botToken" required />
+
+      <label for="teamSelect">Select Team (Optional)</label>
+      <select id="teamSelect" name="teamId">
+        <option value="">Your Teams</option>
+        <!-- Teams will be populated by JS -->
+      </select>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="button" id="cancelModalBtn" class="btn btn-danger">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
       </div>
     </div>
 
