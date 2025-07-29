@@ -6,6 +6,8 @@ import session from 'express-session';
 // import cookieParser from 'cookie-parser';
 // import pgSession from 'connect-pg-simple';
 // import { Pool } from 'pg';
+import { RedisStore } from 'connect-redis';
+import redisClient from './config/redis/redis.config';
 import requestLoggerMiddleware from './config/logger/requestLogger';
 import limiter from './config/ratelimit/ratelimiter';
 import { ApiLogger } from './config/logger/apiLogger';
@@ -19,6 +21,7 @@ import HttpMainError from './libs/error/httpMainError';
 dotenv.config();
 
 const App = express();
+const redisStore = new RedisStore({ client: redisClient, prefix: 'Telegraph:' });
 // const isProduction = process.env.NODE_ENV === 'production';
 // const PgSession = pgSession(session)
 export const logger = new ApiLogger();
@@ -48,11 +51,7 @@ App.use(
 App.use(express.json());
 App.use(
   session({
-    // store: new PgSession({
-    //   pool: pgPool,
-    //   tableName: "user_sessions",
-    //   createTableIfMissing: true
-    // }),
+    store: redisStore,
     secret: process.env.SESSION_SECRET as string,
     resave: false,
     saveUninitialized: false,

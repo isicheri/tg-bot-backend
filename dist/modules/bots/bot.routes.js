@@ -11,5 +11,5 @@ botRouter.use(auth_middleware_1.authenticatedMiddleware);
 botRouter.post('/create', (0, response_handler_1.responseHandler)(bots_controller_1.createBotController));
 botRouter.get('/:botId/broadcasts', (0, response_handler_1.responseHandler)(broadcast_controller_1.getRecentBroadcasts));
 botRouter.get('/user-bot', (0, response_handler_1.responseHandler)(bots_controller_1.getUserBotCount));
-botRouter.get("/info/:botId", (0, response_handler_1.responseHandler)(bots_controller_1.veiwBotInfoController));
+botRouter.get('/info/:botId', (0, response_handler_1.responseHandler)(bots_controller_1.veiwBotInfoController));
 exports.default = botRouter;

@@ -63,20 +63,23 @@ const getUserBotCount = async (req, res) => {
 exports.getUserBotCount = getUserBotCount;
 const veiwBotInfoController = async (req, res) => {
     const botId = req.params.botId;
-    const bot = await client_1.default.bot.findFirst({ where: { id: botId }, select: {
+    const bot = await client_1.default.bot.findFirst({
+        where: { id: botId },
+        select: {
             name: true,
             username: true,
             team: {
                 select: {
                     name: true,
-                }
+                },
             },
             user: {
                 select: {
-                    username: true
-                }
-            }
-        } });
+                    username: true,
+                },
+            },
+        },
+    });
     res.status(200).json({ status: true, botInfo: bot });
 };
 exports.veiwBotInfoController = veiwBotInfoController;

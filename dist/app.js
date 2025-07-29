@@ -12,6 +12,8 @@ const express_session_1 = __importDefault(require("express-session"));
 // import cookieParser from 'cookie-parser';
 // import pgSession from 'connect-pg-simple';
 // import { Pool } from 'pg';
+const connect_redis_1 = require("connect-redis");
+const redis_config_1 = __importDefault(require("./config/redis/redis.config"));
 const requestLogger_1 = __importDefault(require("./config/logger/requestLogger"));
 const ratelimiter_1 = __importDefault(require("./config/ratelimit/ratelimiter"));
 const apiLogger_1 = require("./config/logger/apiLogger");
@@ -23,6 +25,7 @@ const viewsRoutes_1 = __importDefault(require("./viewsRoutes"));
 const httpMainError_1 = __importDefault(require("./libs/error/httpMainError"));
 dotenv_1.default.config();
 const App = (0, express_1.default)();
+const redisStore = new connect_redis_1.RedisStore({ client: redis_config_1.default, prefix: "Telegraph:" });
 // const isProduction = process.env.NODE_ENV === 'production';
 // const PgSession = pgSession(session)
 exports.logger = new apiLogger_1.ApiLogger();
@@ -48,11 +51,7 @@ App.use(helmet_1.default.contentSecurityPolicy({
 }));
 App.use(express_1.default.json());
 App.use((0, express_session_1.default)({
-    // store: new PgSession({
-    //   pool: pgPool,
-    //   tableName: "user_sessions",
-    //   createTableIfMissing: true
-    // }),
+    store: redisStore,
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
