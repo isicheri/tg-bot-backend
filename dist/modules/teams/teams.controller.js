@@ -5,27 +5,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUserTeamsPersonalAndNotPersonal = void 0;
 const client_1 = __importDefault(require("../../config/db/client"));
-const teams_service_1 = require("./teams.service");
+// import { TeamsService } from "./teams.service";
 const httpMainError_1 = __importDefault(require("../../libs/error/httpMainError"));
 // import {  } from "./team.validation";
-const teamsService = new teams_service_1.TeamsService();
+// const teamsService = new TeamsService();
 const getUserTeamsPersonalAndNotPersonal = async (req, res) => {
     const userId = req.user?.id;
     if (!userId) {
-        throw new httpMainError_1.default("User Not Found", 404, "Not_Found", null);
+        throw new httpMainError_1.default('User Not Found', 404, 'Not_Found', null);
     }
-    const user = await client_1.default.user.findUnique({ where: {
-            id: userId
+    const user = await client_1.default.user.findUnique({
+        where: {
+            id: userId,
         },
         include: {
             teamsOwned: {
                 select: {
                     id: true,
                     name: true,
-                    ownerId: true
-                }
-            }
-        }
+                    ownerId: true,
+                },
+            },
+        },
     });
     // Teams where the user is a member (but not the owner)
     const teamMemberships = await client_1.default.teamMember.findMany({

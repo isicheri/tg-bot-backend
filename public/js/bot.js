@@ -11,6 +11,11 @@ const botGrid = document.getElementById("botGrid");
  const openModalBtn = document.getElementById('openModalBtn');
   const cancelModalBtn = document.getElementById('cancelModalBtn');
   const teamSelect = document.getElementById('teamSelect');
+  const closeViewBotBtn = document.getElementById("viewbotinfoclose");
+  const viewBotModal = document.getElementById("veiwBotModal");
+  const viewBotContentDiv = document.getElementById("bot-info-content");
+
+const createBotForm = document.getElementById('createBotForm');
 
 
 
@@ -24,10 +29,108 @@ const botGrid = document.getElementById("botGrid");
     modal.classList.add('my_hidden');
   });
 
+closeViewBotBtn.addEventListener("click",() => {
+  viewBotModal.classList.add('hidden!')
+})
+
+
+   
+createBotForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const botToken = document.getElementById('botToken').value.trim();
+  const teamId = document.getElementById('teamSelect').value;
+  
+  if (!botToken) {
+    return showToast("Please enter a bot token", "warning");
+  }
+    modal.classList.add('my_hidden');
+  try {
+    showloader();
+    const res = await fetch('/api/bot/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({token:botToken, teamId })
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      hideloader();
+      showToast(data.message, "success");
+      modal.classList.add('my_hidden');
+      location.reload();
+    } else {
+      hideloader();
+      showToast(data.message, "error");
+    }
+  } catch (error) {
+    hideloader();
+    console.error(error);
+    showToast("Something went wrong!", "error");
+  }
+}); 
+
+
   
     await populateTeamSelect(teamSelect);
      await populateBotSelect(botSelect);
      await populateBotGrid(botGrid);
+
+const viewBotBtns = document.querySelectorAll("#viewBotBtn");
+  viewBotBtns.forEach((btn) => {
+    btn.addEventListener("click",async(event) => {
+  const card = event.target.closest('.card-body');
+  if (!card) {
+    // const id = card.dataset.id;
+    // console.log("Bot ID:", id);
+    return;
+    }
+
+
+    try {
+      const botId = card.dataset.id;
+    showloader();
+    const res = await fetch(`/api/bot/info/${botId}`)
+    const data = await res.json()
+    
+    if (res.ok) {
+      hideloader();
+  viewBotModal.classList.remove('hidden!')
+viewBotContentDiv.innerHTML = `
+ <div class="h-7 w-[80%] flex items-center justify-between m-2">
+          <p>Name: </p>
+          <p>${data.botInfo.name}</p>
+        </div>
+
+        <div class="h-7 w-[80%] flex items-center justify-between m-2">
+           <p>Team: </p>
+          <p>${!data.botInfo.team ? "(Personal bot)" : data.botInfo.team.name}</p>
+        </div>
+
+        <div class="h-7 w-[80%] flex items-center justify-between m-2">
+          <p>Owner:</p>
+          <p>${data.botInfo.user.username}</p>
+        </div>
+
+        <div class="h-7 w-[80%] flex items-center justify-between m-2">
+           <p>username</p>
+          <p>@${data.botInfo.username}</p>
+        </div>
+`;
+    } else {
+      hideloader();
+      viewBotContentDiv.innerHTML = '<p classs="text-error">failed to load bot info!</p>'
+      showToast(data.message, "error");
+    }
+
+    } catch (error) {
+      showToast("could not fetch bot","error");
+      console.log("veiw bot error: ",error);
+    }
+    })
+  })
+
 })
 
 
@@ -76,7 +179,7 @@ const populateBotGrid = async (botGrid) => {
         card.className = "card bg-base-100 shadow-md border";
 
         card.innerHTML = `
-          <div class="card-body">
+          <div class="card-body" data-id=${bot.id}>
             <div class="flex justify-between items-center">
               <h3 class="card-title">${bot.name}</h3>
               <span class="badge badge-outline text-xs">${type}</span>
@@ -84,7 +187,7 @@ const populateBotGrid = async (botGrid) => {
             <p class="text-sm text-gray-400">@${bot.username}</p>
 
             <div class="flex gap-2 mt-4">
-              <button title="View" class="btn btn-sm btn-outline">
+              <button title="View" class="btn btn-sm btn-outline" id="viewBotBtn">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                   viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -163,7 +266,7 @@ const populateTeamSelect = async (teamSelect) => {
   }
 };
 
-    function showToast(message, type = "info") {
+  function showToast(message, type = "info") {
       toast.innerHTML = `<div class="alert alert-${type} bg-${type}">${message}</div>`;
       toast.classList.remove('hidden');
       setTimeout(() => toast.classList.add('hidden'), 3000);
@@ -175,46 +278,3 @@ const populateTeamSelect = async (teamSelect) => {
     function hideloader() {
       loader.classList.add('hidden');
     }
-
-const createBotForm = document.getElementById('createBotForm');
-
-createBotForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const botToken = document.getElementById('botToken').value.trim();
-  const teamId = document.getElementById('teamSelect').value;
-  
-  if (!botToken) {
-    return showToast("Please enter a bot token", "warning");
-  }
-
-    modal.classList.add('my_hidden');
-
-
-  showloader();
-
-  // try {
-  //   showloader();
-  //   const res = await fetch('/api/bot/create', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({ botToken, teamId })
-  //   });
-
-  //   const data = await res.json();
-
-  //   if (res.ok) {
-  //     hideloader();
-  //     showToast(data.message, "success");
-  //     modal.classList.add('my_hidden');
-  //     location.reload();
-  //   } else {
-  //     hideloader();
-  //     showToast(data.message, "error");
-  //   }
-  // } catch (error) {
-  //   hideloader();
-  //   console.error(error);
-  //   showToast("Something went wrong!", "error");
-  // }
-}); 

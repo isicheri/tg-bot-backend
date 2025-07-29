@@ -69,7 +69,7 @@ model Bot {
 model Subscriber {
   id         String   @id @default(uuid())
   chatId     String   
-  username   String?  
+  username   String?   
   firstName  String?
   lastName   String?
   botId      String

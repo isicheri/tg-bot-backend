@@ -3,13 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.webhookController = exports.getUserBotCount = exports.createBotController = void 0;
+exports.webhookController = exports.veiwBotInfoController = exports.getUserBotCount = exports.createBotController = void 0;
 const bot_service_1 = require("./bot.service");
 const telegram_1 = require("../../libs/telegram");
 const bot_validation_1 = require("./bot.validation");
 const httpMainError_1 = __importDefault(require("../../libs/error/httpMainError"));
 const subscribers_service_1 = require("../subscribers/subscribers.service");
 const app_1 = require("../../app");
+const client_1 = __importDefault(require("../../config/db/client"));
 const botService = new bot_service_1.BotService();
 const telegramService = new telegram_1.TelegramService();
 const subscriberService = new subscribers_service_1.SubscriberService();
@@ -60,6 +61,25 @@ const getUserBotCount = async (req, res) => {
     });
 };
 exports.getUserBotCount = getUserBotCount;
+const veiwBotInfoController = async (req, res) => {
+    const botId = req.params.botId;
+    const bot = await client_1.default.bot.findFirst({ where: { id: botId }, select: {
+            name: true,
+            username: true,
+            team: {
+                select: {
+                    name: true,
+                }
+            },
+            user: {
+                select: {
+                    username: true
+                }
+            }
+        } });
+    res.status(200).json({ status: true, botInfo: bot });
+};
+exports.veiwBotInfoController = veiwBotInfoController;
 const webhookController = async (req, res) => {
     const id = req.params.botId;
     const findBot = await botService.findById(id);

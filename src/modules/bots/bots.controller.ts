@@ -5,6 +5,7 @@ import { CreateBotSchema } from './bot.validation';
 import HttpMainError from '../../libs/error/httpMainError';
 import { SubscriberService } from '../subscribers/subscribers.service';
 import { logger } from '../../app';
+import prismaClient from '../../config/db/client';
 
 const botService = new BotService();
 const telegramService = new TelegramService();
@@ -61,6 +62,29 @@ export const getUserBotCount = async (req: Request, res: Response) => {
     message: 'Bot created successfully',
     count: botCount,
   });
+};
+
+export const veiwBotInfoController = async (req: Request, res: Response) => {
+  const botId = req.params.botId;
+  const bot = await prismaClient.bot.findFirst({
+    where: { id: botId },
+    select: {
+      name: true,
+      username: true,
+      team: {
+        select: {
+          name: true,
+        },
+      },
+      user: {
+        select: {
+          username: true,
+        },
+      },
+    },
+  });
+
+  res.status(200).json({ status: true, botInfo: bot });
 };
 
 export const webhookController = async (req: Request, res: Response) => {

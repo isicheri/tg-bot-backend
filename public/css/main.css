@@ -8,7 +8,8 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
-    --color-amber-500: oklch(76.9% 0.188 70.08);
+    --color-amber-100: oklch(96.2% 0.059 95.617);
+    --color-amber-300: oklch(87.9% 0.169 91.605);
     --color-yellow-500: oklch(79.5% 0.184 86.047);
     --color-green-500: oklch(72.3% 0.219 149.579);
     --color-gray-300: oklch(87.2% 0.01 258.338);
@@ -2139,6 +2140,9 @@
       gap: calc(0.25rem * 4);
     }
   }
+  .m-2 {
+    margin: calc(var(--spacing) * 2);
+  }
   .m-2941 {
     margin: calc(var(--spacing) * 2941);
   }
@@ -2529,6 +2533,9 @@
   .hidden {
     display: none;
   }
+  .hidden\! {
+    display: none !important;
+  }
   .inline {
     display: inline;
   }
@@ -2541,6 +2548,9 @@
   .h-1 {
     height: calc(var(--spacing) * 1);
   }
+  .h-3 {
+    height: calc(var(--spacing) * 3);
+  }
   .h-4 {
     height: calc(var(--spacing) * 4);
   }
@@ -2549,6 +2559,9 @@
   }
   .h-6 {
     height: calc(var(--spacing) * 6);
+  }
+  .h-7 {
+    height: calc(var(--spacing) * 7);
   }
   .h-10 {
     height: calc(var(--spacing) * 10);
@@ -2559,11 +2572,17 @@
   .h-64 {
     height: calc(var(--spacing) * 64);
   }
+  .h-\[80px\] {
+    height: 80px;
+  }
   .h-\[95vh\] {
     height: 95vh;
   }
   .h-\[290px\] {
     height: 290px;
+  }
+  .h-\[300px\] {
+    height: 300px;
   }
   .h-\[500px\] {
     height: 500px;
@@ -2609,9 +2628,6 @@
   }
   .w-64 {
     width: calc(var(--spacing) * 64);
-  }
-  .w-\[15\%\]\! {
-    width: 15% !important;
   }
   .w-\[80\%\] {
     width: 80%;
@@ -2717,6 +2733,9 @@
   }
   .justify-center {
     justify-content: center;
+  }
+  .justify-end {
+    justify-content: flex-end;
   }
   .justify-start {
     justify-content: flex-start;
@@ -2863,6 +2882,9 @@
   }
   .bg-accent {
     background-color: var(--color-accent);
+  }
+  .bg-amber-100 {
+    background-color: var(--color-amber-100);
   }
   .bg-base-100 {
     background-color: var(--color-base-100);
