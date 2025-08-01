@@ -5,15 +5,31 @@ import { JsonwebtokenService, Jwtpayload } from '../../libs/jwt.service';
 import HttpMainError from '../../libs/error/httpMainError';
 import { forgotPasswordUserSchema, resetUserSchema } from './user.validation';
 import { hashPassword } from '../../libs/helpers';
+import redisClient from '../../config/redis/redis.config';
 
 const userService = new UserService();
 
-export const getUserbotsPersonalandTeamController = async (req: Request, res: Response) => {
+export const getUserbotsPersonalandTeamController = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   const userId = req.user?.id;
+  if (!userId) {
+    res.status(401).json({ message: 'Unauthorized' });
+    return;
+  }
+  const cacheKey = `user_bots_${userId}`;
+  const cachedBots = await redisClient.get(cacheKey);
+  if (cachedBots) {
+    res.status(200).json({ userBot: JSON.parse(cachedBots), cached: true });
+    return;
+  }
   const personalBots = await prismaClient.bot.findMany({ where: { userId } });
   const teamMemberships = await prismaClient.teamMember.findMany({ where: { userId } });
   const teamIds = teamMemberships.map((tm) => tm.teamId);
   const teamBots = await prismaClient.bot.findMany({ where: { teamId: { in: teamIds } } });
+  const bots = [...personalBots, ...teamBots];
+  await redisClient.set(cacheKey, JSON.stringify(bots), 'EX', 120);
   res.status(200).json({ userBot: [...personalBots, ...teamBots] });
 };
 

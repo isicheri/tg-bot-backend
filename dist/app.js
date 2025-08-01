@@ -25,7 +25,7 @@ const viewsRoutes_1 = __importDefault(require("./viewsRoutes"));
 const httpMainError_1 = __importDefault(require("./libs/error/httpMainError"));
 dotenv_1.default.config();
 const App = (0, express_1.default)();
-const redisStore = new connect_redis_1.RedisStore({ client: redis_config_1.default, prefix: "Telegraph:" });
+const redisStore = new connect_redis_1.RedisStore({ client: redis_config_1.default, prefix: 'Telegraph:' });
 // const isProduction = process.env.NODE_ENV === 'production';
 // const PgSession = pgSession(session)
 exports.logger = new apiLogger_1.ApiLogger();

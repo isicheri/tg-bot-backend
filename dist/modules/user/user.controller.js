@@ -10,13 +10,26 @@ const jwt_service_1 = require("../../libs/jwt.service");
 const httpMainError_1 = __importDefault(require("../../libs/error/httpMainError"));
 const user_validation_1 = require("./user.validation");
 const helpers_1 = require("../../libs/helpers");
+const redis_config_1 = __importDefault(require("../../config/redis/redis.config"));
 const userService = new user_service_1.UserService();
 const getUserbotsPersonalandTeamController = async (req, res) => {
     const userId = req.user?.id;
+    if (!userId) {
+        res.status(401).json({ message: "Unauthorized" });
+        return;
+    }
+    const cacheKey = `user_bots_${userId}`;
+    const cachedBots = await redis_config_1.default.get(cacheKey);
+    if (cachedBots) {
+        res.status(200).json({ userBot: JSON.parse(cachedBots), cached: true });
+        return;
+    }
     const personalBots = await client_1.default.bot.findMany({ where: { userId } });
     const teamMemberships = await client_1.default.teamMember.findMany({ where: { userId } });
     const teamIds = teamMemberships.map((tm) => tm.teamId);
     const teamBots = await client_1.default.bot.findMany({ where: { teamId: { in: teamIds } } });
+    const bots = [...personalBots, ...teamBots];
+    await redis_config_1.default.set(cacheKey, JSON.stringify(bots), 'EX', 120);
     res.status(200).json({ userBot: [...personalBots, ...teamBots] });
 };
 exports.getUserbotsPersonalandTeamController = getUserbotsPersonalandTeamController;

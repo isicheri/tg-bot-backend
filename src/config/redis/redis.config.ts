@@ -1,8 +1,14 @@
 import Redis from 'ioredis';
 
 const redisClient = new Redis({
-  host: 'localhost',
-  port: 6379,
+  username: 'default',
+  host: process.env.REDIS_HOST ?? 'localhost',
+  port: 15649,
+  password: process.env.REDIS_PASSWORD,
+  retryStrategy(times) {
+    const delay = Math.min(times * 50, 2000);
+    return delay;
+  },
 });
 
 redisClient.on('connecting', () => {
